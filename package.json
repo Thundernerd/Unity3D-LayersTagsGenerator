@@ -17,6 +17,6 @@
     "url": "https://www.tnrd.net"
   },
   "dependencies": {
-    "net.tnrd.codegenerator": "1.0.0"
+    "net.tnrd.codegenerator": "https://github.com/Thundernerd/Unity3D-CodeGenerator.git#1.0.0"
   }
 }
