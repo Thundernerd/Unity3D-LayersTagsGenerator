@@ -1,0 +1,17 @@
+{
+    "name": "TNRD.LayerTagsGenerator.Editor",
+    "references": [
+        "TNRD.CodeGenerator.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
