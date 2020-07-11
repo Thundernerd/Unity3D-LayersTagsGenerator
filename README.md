@@ -22,7 +22,7 @@ A package that contains generators that will generate classes containing the pro
 openupm add net.tnrd.layerstagsgenerator
 ```
 2. You can also install via git url by adding these entries in your **manifest.json**
-```
+```json
 "net.tnrd.layerstagsgenerator": "https://github.com/Thundernerd/Unity3D-LayersTagsGenerator.git",
 "net.tnrd.codegenerator": "https://github.com/Thundernerd/Unity3D-CodeGenerator.git"
 ```
@@ -58,7 +58,7 @@ public class Foo : MonoBehaviour
 ```
 
 ## Support
-Code Generator is an open-source project that I hope helps other people. It is by no means necessary but if you feel generous you can support me by donating.
+Layers & Tags Generator is an open-source project that I hope helps other people. It is by no means necessary but if you feel generous you can support me by donating.
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J11GEYY)
 
