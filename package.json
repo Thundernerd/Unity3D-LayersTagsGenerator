@@ -1,7 +1,7 @@
 {
   "name": "net.tnrd.layertagsgenerator",
   "displayName": "Layer Tags Generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "unity": "2019.1",
   "description": "A simple tool to generate files that contain the project's Layers, Sorting Layers, and Tags.",
   "keywords": [
@@ -17,6 +17,6 @@
     "url": "https://www.tnrd.net"
   },
   "dependencies": {
-    "net.tnrd.codegenerator": "https://github.com/Thundernerd/Unity3D-CodeGenerator.git#1.0.0"
+    "net.tnrd.codegenerator": "1.0.0"
   }
 }
