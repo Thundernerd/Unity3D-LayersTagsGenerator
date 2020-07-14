@@ -1,7 +1,7 @@
 {
   "name": "net.tnrd.layertagsgenerator",
   "displayName": "Layer Tags Generator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "unity": "2019.1",
   "description": "A simple tool to generate files that contain the project's Layers, Sorting Layers, and Tags.",
   "keywords": [

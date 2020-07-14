@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.2] - 2020-07-14
+
+### Fixed
+- Missing meta file
+
 ## [1.0.1] - 2020-07-14
 
 ### Fixed
