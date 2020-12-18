@@ -1,5 +1,3 @@
-# Layers & Tags Generator
-
 <p align="center">
 	<img alt="GitHub package.json version" src ="https://img.shields.io/github/package-json/v/Thundernerd/Unity3D-LayersTagsGenerator" />
 	<a href="https://github.com/Thundernerd/Unity3D-LayersTagsGenerator/issues">
@@ -13,8 +11,6 @@
 	</a>
 	<img alt="GitHub last commit" src ="https://img.shields.io/github/last-commit/Thundernerd/Unity3D-LayersTagsGenerator" />
 </p>
-
-A package that contains generators that will generate classes containing the project's Layers and Tags for easy access.
 
 ## Installation
 1. The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
