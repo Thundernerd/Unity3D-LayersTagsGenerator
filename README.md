@@ -21,11 +21,9 @@ A package that contains generators that will generate classes containing the pro
 ```
 openupm add net.tnrd.layerstagsgenerator
 ```
-2. You can also install via git url by adding these entries in your **manifest.json**
-```json
-"net.tnrd.layerstagsgenerator": "https://github.com/Thundernerd/Unity3D-LayersTagsGenerator.git",
-"net.tnrd.codegenerator": "https://github.com/Thundernerd/Unity3D-CodeGenerator.git"
-```
+2. Installing through a [Unity Package](http://package-installer.glitch.me/v1/installer/package.openupm.com/net.tnrd.layerstagsgenerator?registry=https://package.openupm.com) created by the [Package Installer Creator](https://package-installer.glitch.me) from [Needle](https://needle.tools)
+
+[<img src="https://img.shields.io/badge/-Download-success?style=for-the-badge"/>](http://package-installer.glitch.me/v1/installer/package.openupm.com/net.tnrd.layerstagsgenerator?registry=https://package.openupm.com)
 
 ## Usage
 
