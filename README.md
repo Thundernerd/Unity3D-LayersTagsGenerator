@@ -21,11 +21,9 @@ A package that contains generators that will generate classes containing the pro
 ```
 openupm add net.tnrd.layerstagsgenerator
 ```
-2. You can also install via git url by adding these entries in your **manifest.json**
-```json
-"net.tnrd.layerstagsgenerator": "https://github.com/Thundernerd/Unity3D-LayersTagsGenerator.git",
-"net.tnrd.codegenerator": "https://github.com/Thundernerd/Unity3D-CodeGenerator.git"
-```
+2. Installing through a [Unity Package](http://package-installer.glitch.me/v1/installer/package.openupm.com/net.tnrd.layerstagsgenerator?registry=https://package.openupm.com) created by the [Package Installer Creator](https://package-installer.glitch.me) from [Needle](https://needle.tools)
+
+[<img src="https://img.shields.io/badge/-Download-success?style=for-the-badge"/>](http://package-installer.glitch.me/v1/installer/package.openupm.com/net.tnrd.layerstagsgenerator?registry=https://package.openupm.com)
 
 ## Usage
 
@@ -34,12 +32,12 @@ Once you have installed the package into your project you can access the generat
 You can generate the Tags, Layers, and Sorting Layers all separately by using their respective menu items, or generate them all by using the Generate All menu item.
 
 
-![alt](./~Documentation/menu_items.png)
+![alt](./Documentation~/menu_items.png)
 
 
 Once you have generated one or more through the menu, you will see the files appear in your project located int he Generated folder, which resides at top level in your Assets folder.
 
-![alt](./~Documentation/generated_files.png)
+![alt](./Documentation~/generated_files.png)
 
 To use the generated files you simply access them through their classes which are: Tags, Layers, and SortingLayers.
 Below is an example of a use case for the Tags. 
