@@ -1,7 +1,11 @@
 ﻿using System;
+using System.CodeDom;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using Microsoft.CSharp;
 using UnityEditor;
 
 namespace TNRD.CodeGeneration
@@ -72,6 +76,28 @@ namespace TNRD.CodeGeneration
             }
 
             return name;
+        }
+
+        public static void GenerateToFile(CodeCompileUnit unit, string directory, string filename)
+        {
+            CSharpCodeProvider codeProvider = new CSharpCodeProvider();
+            CodeGeneratorOptions options = new CodeGeneratorOptions
+            {
+                BracingStyle = "C"
+            };
+
+            StringWriter writer = new StringWriter();
+            codeProvider.GenerateCodeFromCompileUnit(unit, writer, options);
+            writer.Flush();
+            string output = writer.ToString();
+
+            string directoryPath = directory;
+            string filePath = directoryPath + "/" + filename;
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
+
+            File.WriteAllText(filePath, output);
+            AssetDatabase.Refresh();
         }
     }
 }

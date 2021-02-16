@@ -1,4 +1,7 @@
-﻿using UnityEditor;
+﻿using System.CodeDom;
+using System.Linq;
+using System.Reflection;
+using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -15,24 +18,34 @@ namespace TNRD.CodeGeneration.Tags
 
         public void Generate()
         {
-            string[] tags = InternalEditorUtility.tags;
+            string[] tags = InternalEditorUtility.tags
+                .OrderBy(x => x)
+                .ToArray();
 
-            Generator generator = new Generator();
-            Class tagsClass = new Class("Tags");
+            CodeCompileUnit compileUnit = new CodeCompileUnit();
+            CodeNamespace codeNamespace = new CodeNamespace();
+            CodeTypeDeclaration classDeclaration = new CodeTypeDeclaration("Tags")
+            {
+                IsClass = true,
+                TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed
+            };
 
             foreach (string tag in tags)
             {
-                tagsClass.AddField(
-                    new Field(Utilities.GetScreamName(tag), tag, typeof(string))
-                    {
-                        IsConst = true
-                    });
+                CodeMemberField field = new CodeMemberField
+                {
+                    Attributes = MemberAttributes.Public | MemberAttributes.Const,
+                    Name = Utilities.GetScreamName(tag),
+                    Type = new CodeTypeReference(typeof(string)),
+                    InitExpression = new CodePrimitiveExpression(tag)
+                };
+                classDeclaration.Members.Add(field);
             }
 
-            generator.AddClass(tagsClass);
-            generator.SaveToFile(Application.dataPath + "/Generated/Tags.cs");
+            codeNamespace.Types.Add(classDeclaration);
+            compileUnit.Namespaces.Add(codeNamespace);
 
-            AssetDatabase.Refresh();
+            Utilities.GenerateToFile(compileUnit, Application.dataPath + "/Generated", "Tags.cs");
         }
     }
 }

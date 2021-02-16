@@ -1,4 +1,7 @@
-﻿using UnityEditor;
+﻿using System.CodeDom;
+using System.Linq;
+using System.Reflection;
+using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -15,33 +18,45 @@ namespace TNRD.CodeGeneration.Layers
 
         public void Generate()
         {
-            string[] layers = InternalEditorUtility.layers;
+            string[] layers = InternalEditorUtility.layers
+                .OrderBy(x => x)
+                .ToArray();
 
-            Generator generator = new Generator();
-            Class @class = new Class("Layers");
+            CodeCompileUnit codeCompileUnit = new CodeCompileUnit();
+            CodeNamespace codeNamespace = new CodeNamespace();
+            CodeTypeDeclaration classDeclaration = new CodeTypeDeclaration("Layers")
+            {
+                IsClass = true,
+                TypeAttributes = TypeAttributes.Public | TypeAttributes.Sealed
+            };
 
             for (int i = 0; i < layers.Length; i++)
             {
-                string layerName = Utilities.GetScreamName(layers[i]);
+                string layer = layers[i];
+                string layerName = Utilities.GetScreamName(layer);
                 string maskName = layerName + "_MASK";
+                int layerValue = LayerMask.NameToLayer(layer);
 
-                @class.AddField(
-                    new Field(layerName, i, typeof(int))
-                    {
-                        IsConst = true
-                    });
+                CodeMemberField layerField = new CodeMemberField(typeof(int), layerName)
+                {
+                    Attributes = MemberAttributes.Public | MemberAttributes.Const,
+                    InitExpression = new CodePrimitiveExpression(layerValue)
+                };
 
-                @class.AddField(
-                    new Field(maskName, string.Format("1 << {0}", i), typeof(int))
-                    {
-                        IsConst = true
-                    });
+                CodeMemberField maskField = new CodeMemberField(typeof(int), maskName)
+                {
+                    Attributes = MemberAttributes.Public | MemberAttributes.Const,
+                    InitExpression = new CodePrimitiveExpression(1 << layerValue)
+                };
+
+                classDeclaration.Members.Add(layerField);
+                classDeclaration.Members.Add(maskField);
             }
 
-            generator.AddClass(@class);
-            generator.SaveToFile(Application.dataPath + "/Generated/Layers.cs");
+            codeNamespace.Types.Add(classDeclaration);
+            codeCompileUnit.Namespaces.Add(codeNamespace);
 
-            AssetDatabase.Refresh();
+            Utilities.GenerateToFile(codeCompileUnit, Application.dataPath + "/Generated", "Layers.cs");
         }
     }
 }
