@@ -9,32 +9,32 @@ namespace TNRD.CodeGeneration.Layers
         [MenuItem("TNRD/Code Generation/Layers")]
         private static void Execute()
         {
-            var generator = new LayerGenerator();
+            LayerGenerator generator = new LayerGenerator();
             generator.Generate();
         }
 
         public void Generate()
         {
-            var layers = InternalEditorUtility.layers;
+            string[] layers = InternalEditorUtility.layers;
 
-            var generator = new Generator();
-            var @class = new Class("Layers");
+            Generator generator = new Generator();
+            Class @class = new Class("Layers");
 
             for (int i = 0; i < layers.Length; i++)
             {
-                var layerName = Utilities.GetScreamName(layers[i]);
-                var maskName = layerName + "_MASK";
+                string layerName = Utilities.GetScreamName(layers[i]);
+                string maskName = layerName + "_MASK";
 
                 @class.AddField(
                     new Field(layerName, i, typeof(int))
                     {
-                        IsConst = true,
+                        IsConst = true
                     });
 
                 @class.AddField(
                     new Field(maskName, string.Format("1 << {0}", i), typeof(int))
                     {
-                        IsConst = true,
+                        IsConst = true
                     });
             }
 

@@ -4,29 +4,29 @@ using UnityEngine;
 
 namespace TNRD.CodeGeneration.Tags
 {
-    public class TagCodeGenerator : ICodeGenerator
+    public class TagGenerator : ICodeGenerator
     {
         [MenuItem("TNRD/Code Generation/Tags")]
         private static void Execute()
         {
-            var generator = new TagCodeGenerator();
+            TagGenerator generator = new TagGenerator();
             generator.Generate();
         }
 
         public void Generate()
         {
-            var tags = InternalEditorUtility.tags;
+            string[] tags = InternalEditorUtility.tags;
 
-            var generator = new Generator();
-            var tagsClass = new Class("Tags");
+            Generator generator = new Generator();
+            Class tagsClass = new Class("Tags");
 
-            foreach (var tag in tags)
+            foreach (string tag in tags)
             {
                 tagsClass.AddField(
                     new Field(Utilities.GetScreamName(tag), tag, typeof(string))
-                {
-                    IsConst = true,
-                });
+                    {
+                        IsConst = true
+                    });
             }
 
             generator.AddClass(tagsClass);
