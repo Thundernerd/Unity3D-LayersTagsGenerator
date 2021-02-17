@@ -32,12 +32,12 @@ Once you have installed the package into your project you can access the generat
 You can generate the Tags, Layers, and Sorting Layers all separately by using their respective menu items, or generate them all by using the Generate All menu item.
 
 
-![alt](./~Documentation/menu_items.png)
+![alt](./Documentation~/menu_items.png)
 
 
 Once you have generated one or more through the menu, you will see the files appear in your project located int he Generated folder, which resides at top level in your Assets folder.
 
-![alt](./~Documentation/generated_files.png)
+![alt](./Documentation~/generated_files.png)
 
 To use the generated files you simply access them through their classes which are: Tags, Layers, and SortingLayers.
 Below is an example of a use case for the Tags. 
