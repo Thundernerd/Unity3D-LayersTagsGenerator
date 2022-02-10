@@ -52,7 +52,7 @@ public class Foo : MonoBehaviour
             // Tag
         }
 	
-	if (Layers.ENEMY_MASK & (1 << other.gameObject.layer)) > 0)
+	if (Layers.PLAYER_MASK & (1 << other.gameObject.layer)) > 0)
 	{
             // Layer
 	}
