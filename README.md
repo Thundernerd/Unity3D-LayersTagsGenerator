@@ -40,7 +40,7 @@ Once you have generated one or more through the menu, you will see the files app
 ![alt](./Documentation~/generated_files.png)
 
 To use the generated files you simply access them through their classes which are: Tags, Layers, and SortingLayers.
-Below is an example of a use case for the Tags. 
+Below is an example for Layer and Tag comparison.
 
 ```c#
 public class Foo : MonoBehaviour
@@ -49,8 +49,13 @@ public class Foo : MonoBehaviour
     {
         if (other.transform.CompareTag(Tags.PLAYER))
         {
-            ...
+            // Tag
         }
+	
+	if (Layers.ENEMY_MASK & (1 << other.gameObject.layer)) > 0)
+	{
+            // Layer
+	}
     }
 }
 ```
